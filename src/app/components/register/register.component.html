@@ -1,0 +1,181 @@
+<div class="page">
+  <div class="page__title">
+    Регистрация
+  </div>
+  <div class="page__content">
+    <form style="display: flex; flex-direction: column"
+          [formGroup]="registerForm"
+          (ngSubmit)="onRegister()"
+    >
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Паспорт:
+          </div>
+          <input type="number"
+                 placeholder="3618571234"
+                 formControlName="passport"
+          />
+        </div>
+
+        <div class="form-field__hint">
+          Будет Вашим логином в системе.
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Пароль:
+          </div>
+          <input type="password"
+                 placeholder="Пароль"
+                 formControlName="password"
+          />
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Еще раз пароль:
+          </div>
+          <input type="password"
+                 placeholder="Повторите пароль"
+                 formControlName="verifyPassword"
+          />
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label">
+            Контактный e-mail:
+          </div>
+          <input type="email"
+                 placeholder="email@yandex.ru"
+                 formControlName="email"
+          />
+        </div>
+
+        <div class="form-field__hint">
+          Мы будем присылать только важную информацию.
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Фамилия:
+          </div>
+          <input type="text"
+                 placeholder="Иванов"
+                 formControlName="lastName"
+          />
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Имя:
+          </div>
+          <input type="text"
+                 placeholder="Иван"
+                 formControlName="firstName"
+          />
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label">
+            Отчество:
+          </div>
+          <input type="text"
+                 placeholder="Иванович"
+                 formControlName="middleName"
+          />
+        </div>
+
+        <div class="form-field__hint">
+          Если есть отчество.
+        </div>
+      </div>
+
+<!--      <div class="form-field">-->
+<!--        <div class="form-field__control-container">-->
+<!--          <div class="form-field__label_required">-->
+<!--            Дата рождения:-->
+<!--          </div>-->
+<!--          <input type="date"-->
+<!--                 formControlName="birthday"-->
+<!--          />-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Адрес регистрации:
+          </div>
+          <input type="text"
+                 formControlName="address"
+          />
+        </div>
+      </div>
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Должность сотрудника:
+          </div>
+          <select formControlName="position"
+                  (change)="onSelectPosition($event)"
+          >
+            <option *ngFor="let position of positions"
+                    [value]="position.name"
+            >{{position.name}}</option>
+          </select>
+<!--            <select formControlName="position" >-->
+<!--              <option *ngFor="let position of positions" [value]="position.id">-->
+<!--                {{position.name}}-->
+<!--              </option>-->
+<!--            </select>-->
+<!--          <mat-select [disabled]="!isRegistered" [(ngModel)]="patientId">-->
+<!--            <mat-option (click)="choosePatient(pat.id)" *ngFor="let pat of patients"-->
+<!--                        value="{{pat.id}}">{{pat.lastName}} {{pat.firstName}}</mat-option>-->
+<!--          </mat-select>-->
+<!--          <select formControlName="position"-->
+<!--                  (change)="onSelectPosition($event)"-->
+<!--          >-->
+<!--            <option *ngFor="let position of positions"-->
+<!--                    [value]="position.name"-->
+<!--            >{{position.name}}</option>-->
+<!--          </select>-->
+        </div>
+      </div>
+
+<!--      <div class="form-field">-->
+<!--        <div class="form-field__control-container">-->
+<!--          <div class="form-field__label_required">-->
+<!--            Должность-->
+<!--          </div>-->
+<!--          <data-field [name]="'Должность'"-->
+<!--                      [value]="position.name"-->
+<!--          ></data-field>-->
+<!--        </div>-->
+<!--      </div>-->
+      <div class="form-field" style="width: 100%">
+        <button class="button medium"
+                type="submit"
+                style="width: 250px"
+        >Зарегистрироваться</button>
+        <div class="info">
+          Нажимая на кнопку "Зарегистрироваться", Вы разрешаете
+          обрабатывать Ваши персональные данные в соответствии с законом и
+          нашим <a href="#">соглашением о персональных данных</a>.
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

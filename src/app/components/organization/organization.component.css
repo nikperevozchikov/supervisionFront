@@ -1,0 +1,45 @@
+
+button {
+  margin: 1%;
+}
+
+table {
+  vertical-align: center;
+  align-self: center;
+  align-items: center;
+  align-content: center;
+  width: 95%;
+}
+
+#btnAddNew {
+  margin-right: 2%;
+}
+
+/*#col1 {*/
+/*  width: 20%;*/
+/*  text-align: center;*/
+/*  vertical-align: center;*/
+/*}*/
+
+/*#col2 {*/
+/*  width: 30%;*/
+/*  text-align: center;*/
+/*  vertical-align: center;*/
+/*}*/
+/*#col3 {*/
+/*  width: 50%;*/
+/*  text-align: right;*/
+/*  vertical-align: center;*/
+/*}*/
+/*#col4 {*/
+/*  width: 50%;*/
+/*  vertical-align: center;*/
+/*}*/
+/*#col5 {*/
+/*  width: 50%;*/
+/*  vertical-align: center;*/
+/*}*/
+
+
+
+

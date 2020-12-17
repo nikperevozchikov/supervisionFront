@@ -1,0 +1,63 @@
+<ngx-spinner></ngx-spinner>
+
+<div class="page">
+  <div class="page__title">
+    Список мероприятий
+  </div>
+
+  <div class="page__content">
+    Здесь представлен полный список надзорных мероприятий над организациями.
+
+    <div class="list">
+      <div *ngFor="let event of eventsList"
+           class="list__item"
+      >
+        <div class="list__item__header">
+          {{event.name}}
+        </div>
+        <div class="list__item__content">
+          <div class="data">
+            <data-field [name]="'Название мероприятия'"
+                        [value]="event.name"
+            ></data-field>
+            <data-field [name]="'Дата проведения мероприятия'"
+                        [value]="event.dateOfEvent"
+            ></data-field>
+            <data-field *ngIf="event.resultOfEvent"
+                        [name]="'Результат мероприятия'"
+                        [value]="event.resultOfEvent"
+            ></data-field>
+
+          </div>
+
+          <div class="controls">
+            <popup [popupTitle]="'Список сотрудников'"
+                   [buttonTitle]="'Список сотрудников'"
+                   [styles]="'available-width'"
+                   (onInit)="clearEmployeesByEventName()"
+                   (onDestroy)="clearEmployeesByEventName()"
+            >
+              <ng-container *ngIf="employeesByEvent">
+                <ng-container [ngSwitch]="employeesByEvent.length">
+                  <ng-container *ngSwitchCase="0">
+                    К сожалению, мы никого не нашли.
+                  </ng-container>
+                  <ng-container *ngSwitchDefault>
+                    Список сотрудников с этим мероприятием:
+                    <ul>
+                      <li *ngFor="let employee of employeesByEvent">
+                        {{employee.lastName + " " + employee.firstName + " " + employee.middleName}}
+                        ({{employee.position.name }})
+                      </li>
+                    </ul>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+            </popup>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

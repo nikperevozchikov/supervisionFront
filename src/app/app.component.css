@@ -1,0 +1,52 @@
+/* Main colors */
+.root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+.body {
+  flex: 1 0 auto;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  padding: 50px 100px 20px 100px;
+}
+.header__title-block {
+  width: 260px;
+  text-align: right;
+}
+.header__title-block_title {
+  font-size: 26pt;
+}
+.header__title-block_tagline {
+  font-size: 9pt;
+  color: gray;
+  font-weight: bold;
+}
+.header__menu-block {
+  display: flex;
+  flex-direction: row;
+  width: auto;
+  border-left: 1px solid gray;
+  margin-left: 20px;
+  padding-right: 20px;
+  vertical-align: middle;
+}
+.header__menu-block_item {
+  padding: 20px;
+  font-size: 14pt;
+}
+.header__menu-block_item:hover {
+  background: #0065b1;
+  color: white;
+  cursor: pointer;
+}
+.footer {
+  background: #0065b1;
+  padding: 30px 170px;
+  margin: 40px 0 0 0;
+  color: white;
+  font-size: 11pt;
+}
+/*# sourceMappingURL=app.component.css.map */

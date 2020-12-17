@@ -1,0 +1,57 @@
+<div style="text-align: center; font-size: 40pt; margin: 50px;">
+  Приветствуем вас в НадзорСистема
+</div>
+
+<ng-container *ngIf="userMessage; else unauthorizedUser">
+  <ng-container [ngSwitch]="user.role">
+    <ng-container *ngSwitchCase="'EMPLOYEE'">
+      <ng-container *ngTemplateOutlet="employeeUser"></ng-container>
+    </ng-container>
+<!--    <ng-container *ngSwitchCase="'DOCTOR'">-->
+<!--      <ng-container *ngTemplateOutlet="doctorUser"></ng-container>-->
+<!--    </ng-container>-->
+  </ng-container>
+</ng-container>
+
+<ng-template #employeeUser>
+  <div style="margin:50px;font-size: 14pt; color: gray; text-align: center">
+    {{userMessage}}, нажмите кнопку, чтобы присоединиться к организации
+  </div>
+
+  <div style="text-align: center">
+    <button class="button big-orange-button"
+             routerLink="organizations"
+
+    >Присоединиться</button>
+  </div>
+  <div style="margin:50px;font-size: 14pt; color: gray; text-align: center">
+    {{userMessage}}, нажмите, чтобы перейти в лк
+  </div>
+
+  <div style="text-align: center">
+    <button class="button big-orange-button"
+            routerLink="profile"
+    >Личный кабинет</button>
+  </div>
+</ng-template>
+
+<ng-template #employeeUser>
+  <div style="margin:50px;font-size: 14pt; color: gray; text-align: center">
+    {{userMessage}}, нажми на кнопку для перехода в лк
+  </div>
+
+  <div style="text-align: center">
+    <button class="button big-orange-button"
+            routerLink="profile"
+    >Личный кабинет</button>
+  </div>
+</ng-template>
+
+<ng-template #unauthorizedUser>
+  <div style="text-align: center">
+    <button class="button big-orange-button"
+            routerLink="login"
+    >Войти в личный кабинет</button>
+  </div>
+</ng-template>
+

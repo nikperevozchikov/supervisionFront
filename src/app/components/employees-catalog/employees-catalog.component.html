@@ -1,0 +1,48 @@
+<ngx-spinner></ngx-spinner>
+
+<div class="page">
+  <div class="page__title">
+    Сотрудники
+  </div>
+
+  <div class="page__content">
+    Здесь Вы можете узнать обо всех сотрудниках.
+
+    <div class="list">
+      <div *ngIf="employeesModel.length === 0"
+           class="info"
+      >
+        К сожалению, список пуст.
+      </div>
+      <div *ngFor="let employee of employeesModel"
+           class="list__item"
+      >
+        <div class="list__item__header">
+          {{[employee.lastName, employee.firstName, employee.middleName || ""].join(" ")}}
+        </div>
+        <div class="list__item__content">
+          <div class="data">
+            <data-field [name]="'Должность'"
+                        [value]="employee.position.name"
+            ></data-field>
+
+            <data-field [name]="'Емэйл'"
+                        [value]="employee.email"
+            ></data-field>
+
+          </div>
+
+          <div class="controls">
+            <button *ngIf="isAuthenticated"
+                    class="button medium"
+                    [ngClass]="'available-width'"
+                    (click)="onCreateOrganization(employee.id)"
+            >OK
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

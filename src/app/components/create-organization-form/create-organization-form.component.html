@@ -1,0 +1,152 @@
+<!--<ngx-spinner></ngx-spinner>-->
+
+<div class="page">
+  <div class="page__title">
+    Выбор
+  </div>
+  <div class="page__content">
+    Выберите сотрудника.
+
+    <form style="display: flex; flex-direction: column"
+          [formGroup]="form"
+          (ngSubmit)="onCreateOrganization()"
+    >
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Название организации:
+          </div>
+          <input type="text"
+                 formControlName="organization"
+          />
+        </div>
+      </div>
+<!--      <div class="form-field">-->
+<!--        <div class="form-field__control-container">-->
+<!--          <div class="form-field__label_required">-->
+<!--            Название организации:-->
+<!--          </div>-->
+<!--          <select formControlName="position"-->
+<!--                  (change)="onSelectOrganization($event)"-->
+<!--          >-->
+<!--            <option *ngFor="let organization of organizations"-->
+<!--                    [value]="organization.name"-->
+<!--            >{{organization.name}}</option>-->
+<!--          </select>-->
+<!--        </div>-->
+
+<!--        <div class="form-field__hint">-->
+<!--          Выберите "Любая", если не имеет значения-->
+<!--        </div>-->
+<!--      </div>-->
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Должность сотрудника:
+          </div>
+          <select formControlName="position"
+                  (change)="onSelectPosition($event)"
+          >
+            <option *ngFor="let position of positions"
+                    [value]="position.name"
+            >{{position.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Сотрудник:
+          </div>
+          <select formControlName="employee"
+                  (change)="onSelectEmployee($event)"
+          >
+            <option *ngFor="let employee of employees"
+                    [value]="employee.id"
+            >
+              {{employee.lastName + ' ' + employee.firstName + ' ' + (employee.middleName ? employee.middleName : '')}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Дата начала отслеживания:
+          </div>
+          <div class="dp-date-wrapper">
+            <div class="dp-date-input-container">
+              <div class="dp-form-item">
+                <dp-date-picker id="picker"
+                                [config]="config"
+                                [mode]="'daytime'"
+                                [theme]="material ? 'dp-material dp-main' : 'dp-main'"
+                                [displayDate]="displayDate"
+                                [placeholder]="placeholder"
+                                [formControlName]="'dateTime'"
+                                [minDate]="minDate"
+                                [maxDate]="maxDate"
+                                [minTime]="minTime"
+                                [maxTime]="maxTime"
+                ></dp-date-picker>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field__hint">
+          Если ячейка календаря выделена серым цветом, значит это выходной день,
+
+        </div>
+      </div>
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Мероприятие:
+          </div>
+          <select formControlName="event"
+                  (change)="onSelectEvent($event)"
+          >
+            <option *ngFor="let event of events"
+                    [value]="event.name"
+            >
+              {{event.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <div class="form-field">
+        <div class="form-field__control-container">
+          <div class="form-field__label_required">
+            Режим надзора:
+          </div>
+          <select formControlName="supervision"
+                  (change)="onSelectSupervisionmode($event)"
+          >
+            <option *ngFor="let supervisionmode of supervisionmodes"
+                    [value]="supervisionmode.name"
+            >
+              {{supervisionmode.name}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-field" style="width: 100%">
+        <button class="button medium"
+                type="submit"
+                style="width: 250px"
+        >
+          Внести
+        </button>
+        <div class="info">
+          Будет сохранение, который сохранится в Вашем
+          личном кабинете.
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,204 @@
+<ngx-spinner></ngx-spinner>
+
+<div class="page">
+  <div class="page__title">
+    Личный кабинет
+  </div>
+  <div class="page__content">
+    <div class="tabs">
+      <div class="tab"
+           [ngClass]="selectedTab === 'main' ? 'selected' : ''"
+           (click)="onTabClick('main')"
+      >Основные данные</div>
+      <div class="tab"
+           [ngClass]="selectedTab === 'organizations' ? 'selected' : ''"
+           (click)="onTabClick('organizations')"
+      >Организации</div>
+    </div>
+
+    <ng-container [ngSwitch]="selectedTab">
+      <ng-container *ngSwitchCase="'main'">
+        <ng-content *ngTemplateOutlet="main"></ng-content>
+      </ng-container>
+      <ng-container *ngSwitchCase="'organizations'">
+        <ng-content *ngTemplateOutlet="organizations"></ng-content>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>
+
+<ng-template #main>
+  <ng-container [ngSwitch]="currentUser.role">
+    Вы вошли как
+    <ng-container *ngSwitchCase="'EMPLOYEE'">
+      <b>сотрудник</b>
+    </ng-container>
+    <ng-container *ngSwitchCase="'ADMIN'">
+      <b>администратор</b>
+    </ng-container>
+  </ng-container>
+
+  <div style="display: flex; margin:25px 0;">
+    <!-- avatar -->
+    <div style="display: flex; flex-direction: column;text-align: center">
+      <img src="https://images.app.goo.gl/TxpCoweErzXajNpA6"
+           style="width: 140px; border-radius: 10px"
+           alt="Фото профиля"
+      />
+    </div>
+    <!-- main data -->
+    <div style="display: flex; flex-direction: column; margin-left: 25px;">
+      <data-field [name]="'Фамилия, имя, отчество'"
+                  [value]="getCurrentUserName()"
+      ></data-field>
+
+      <ng-container [ngSwitch]="currentUser.role">
+        <!-- for doctor -->
+        <ng-container *ngSwitchCase="'EMPLOYEE'">
+          <data-field [name]="'Должность'"
+                      [value]="currentUser.position.name"
+          ></data-field>
+        </ng-container>
+        <!-- for имплое -->
+        <ng-container *ngSwitchCase="'EMPLOYEE'">
+          <data-field [name]="'Дата рождения'"
+                      [value]="currentUser.birthday"
+          ></data-field>
+          <data-field [name]="'Адрес регистрации'"
+                      [value]="currentUser.registrationAddress"
+          ></data-field>
+        </ng-container>
+
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #organizations>
+  <div>
+    <ng-container [ngSwitch]="currentUser.role">
+      <ng-container *ngSwitchCase="'EMPLOYEE'">
+        Здесь вы можете посмотреть организации, к которым вы прикреплены.
+        <button class="button medium"
+                style="width: 250px; margin-left: 20px"
+                routerLink="/orgs/create"
+        >Прикрепить</button>
+      </ng-container>
+<!--      <ng-container *ngSwitchCase="'DOCTOR'">-->
+<!--        Здесь вы можете посмотреть талоны на прием к Вам.-->
+<!--        <br/>-->
+<!--        <span style="font-size: 11pt; color: darkslateblue;">-->
+<!--          Обратите внимание: чтобы записаться на прием, Вам нужно перезайти через-->
+<!--          профиль пациента.-->
+<!--        </span>-->
+<!--      </ng-container>-->
+    </ng-container>
+  </div>
+
+  <div class="organizations">
+    <div *ngFor="let org of organizationsList"
+         class="ticket"
+    >
+      <div class="ticket__header">
+        Организация № {{org.id}}
+      </div>
+      <div class="ticket__content">
+        <div class="data">
+          <data-field [name]="'Сотрудник'"
+                      [value]="[org.employee.lastName, org.employee.firstName, org.employee.middleName || ''].join(' ')"
+          ></data-field>
+          <data-field [name]="'Время организации'"
+                      [value]="org.dateFoundation"
+          ></data-field>
+          <data-field [name]="'Должность'"
+                      [value]="org.employee.position.name"
+          ></data-field>
+        </div>
+
+        <div class="controls">
+          <ng-container [ngSwitch]="currentUser.role">
+            <ng-container *ngSwitchCase="'EMPLOYEE'">
+              <popup *ngIf="org.name"
+                     [popupTitle]="'Мои организации'"
+                     [buttonTitle]="'Мои организации'"
+                     [styles]="'outline available-width'"
+              >
+                {{org.name}}
+              </popup>
+            </ng-container>
+            <ng-container *ngSwitchCase="'ADMIN'">
+              <popup [type]="org.name ? 'info' : 'form'"
+                     [popupTitle]="'Добавить организации сотруднику'"
+                     [buttonTitle]="org.name ? 'Назначения' : 'Добавить организации'"
+                     [styles]="'outline available-width'"
+                     [formGroup]="nameForm"
+                     (onSubmit)="onSaveName(org)"
+              >
+                <ng-container *ngIf="org.name; then readonlyName else editableName"
+                ></ng-container>
+                <ng-template #readonlyName>
+                  {{org.name}}
+                </ng-template>
+                <ng-template #editableName>
+                  <label style="width: 100%;">
+                    Введите название:
+                    <textarea class="input-control"
+                              style="width: 100%; height: 200px;"
+                              placeholder="Например, ООО Микрофинанс."
+                              [formControlName]="'name'"
+                    ></textarea>
+                  </label>
+                </ng-template>
+
+                <div style="color: red; margin: 10px 0;">
+                  Внимание! Названия невозможно отредактировать после сохранения.
+                </div>
+              </popup>
+            </ng-container>
+          </ng-container>
+          <popup [type]="'form'"
+                 [popupTitle]="'Изменить время организации'"
+                 [buttonTitle]="'Изменить время организации'"
+                 [styles]="'available-width'"
+                 [formGroup]="dateTimeForm"
+                 (onSubmit)="onSaveDateTime(org)"
+          >
+            <div style="display: flex; flex-direction: column">
+              Введите другое время работы с организацией:
+              <div class="dp-date-wrapper">
+                <div class="dp-date-input-container">
+                  <div class="dp-form-item">
+                    <dp-date-picker id="picker"
+                                    [config]="config"
+                                    [mode]="'daytime'"
+                                    [theme]="material ? 'dp-material dp-main' : 'dp-main'"
+                                    [displayDate]="displayDate"
+                                    [placeholder]="placeholder"
+                                    [formControlName]="'dateTime'"
+                    ></dp-date-picker>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div style="color: gray;margin:10px 0;">
+              Если ячейка календаря выделена серым цветом, значит это выходной день
+
+              <br/><br/>
+              <a href="mailto:support@nadzor.ru">Напишите нам</a>,
+              если считаете, что время назначено по ошибке.
+            </div>
+          </popup>
+          <popup [popupTitle]="'Удалить организацию?'"
+                 [buttonTitle]="'Удалить организацию'"
+                 [styles]="'reject-button available-width'"
+                 [type]="'confirm'"
+                 (onConfirm)="onCancelOrganization(org)"
+          >
+            Вы действительно хотите удалить организацию?
+          </popup>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

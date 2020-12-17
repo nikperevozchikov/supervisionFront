@@ -1,0 +1,209 @@
+<!--<div class="page">-->
+<!--  <div class="page__title">-->
+<!--    Создание новой организации-->
+<!--  </div>-->
+<!--  <div class="page__content">-->
+<!--    <form style="display: flex; flex-direction: column"-->
+<!--          [formGroup]="form"-->
+<!--          (ngSubmit)="onSubmit()"-->
+<!--    >-->
+
+<!--      <div class="form-field">-->
+<!--        <div class="form-field__control-container">-->
+<!--          <div class="form-field__label_required">-->
+<!--            Название:-->
+<!--          </div>-->
+<!--          <input type="text"-->
+<!--                 placeholder="Название"-->
+<!--                 formControlName="name"-->
+<!--          />-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div class="form-field">-->
+<!--        <div class="form-field__control-container">-->
+<!--          <div class="form-field__label_required">-->
+<!--            ОГРН:-->
+<!--          </div>-->
+<!--          <input type="text"-->
+<!--                 placeholder="ОГРН"-->
+<!--                 formControlName="ogrn"-->
+<!--          />-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--&lt;!&ndash;      <div class="form-field">&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="form-field__control-container">&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="form-field__label_required">&ndash;&gt;-->
+<!--&lt;!&ndash;            Дата основания:&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          <div class="dp-date-wrapper">&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="dp-date-input-container">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="dp-form-item">&ndash;&gt;-->
+<!--&lt;!&ndash;                <dp-date-picker id="picker"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                                [mode]="'daytime'"&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;                                [formControlName]="'dateTime'"&ndash;&gt;-->
+
+<!--&lt;!&ndash;                ></dp-date-picker>&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+<!--&lt;!&ndash;          </div>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+
+
+<!--&lt;!&ndash;            <div class="form-field">&ndash;&gt;-->
+<!--&lt;!&ndash;              <div class="form-field__control-container">&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="form-field__label_required">&ndash;&gt;-->
+<!--&lt;!&ndash;                  Дата основания:&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <input type="date"&ndash;&gt;-->
+<!--&lt;!&ndash;                       formControlName="dateFoundation"&ndash;&gt;-->
+<!--&lt;!&ndash;                />&ndash;&gt;-->
+<!--&lt;!&ndash;              </div>&ndash;&gt;-->
+<!--&lt;!&ndash;            </div>&ndash;&gt;-->
+
+
+<!--      <div class="form-field">-->
+<!--        <div class="form-field__control-container">-->
+<!--          <div class="form-field__label_required">-->
+<!--            Сотрудник:-->
+<!--          </div>-->
+<!--          <select formControlName="employee"-->
+<!--                  (change)="onSelectEmployee($event)"-->
+<!--          >-->
+<!--            <option *ngFor="let employee of employees"-->
+<!--                    [value]="employee.lastName"-->
+<!--            >{{employee.lastName + ' ' + employee.firstName + ' ' + (employee.middleName ? employee.middleName : '')}}</option>-->
+<!--          </select>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--        <div class="form-field">-->
+<!--          <div class="form-field__control-container">-->
+<!--            <div class="form-field__label_required">-->
+<!--              Мероприятие:-->
+<!--            </div>-->
+<!--            <select formControlName="event"-->
+<!--                    (change)="onSelectEvent($event)"-->
+<!--            >-->
+<!--              <option *ngFor="let event of events"-->
+<!--                      [value]="event.name"-->
+<!--              >{{event.name}}</option>-->
+<!--            </select>-->
+<!--          </div>-->
+<!--        </div>-->
+
+<!--      <div class="form-field">-->
+<!--        <div class="form-field__control-container">-->
+<!--          <div class="form-field__label_required">-->
+<!--            Режим надзора:-->
+<!--          </div>-->
+<!--          <select formControlName="supervisionmode"-->
+<!--                  (change)="onSelectSupervisionmode($event)"-->
+<!--          >-->
+<!--            <option *ngFor="let supervisionmode of supervisionmodes"-->
+<!--                    [value]="supervisionmode.name"-->
+<!--            >{{supervisionmode.name}}</option>-->
+<!--          </select>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="form-field" style="width: 100%">-->
+<!--        <button class="button medium"-->
+<!--                type="submit"-->
+<!--                style="width: 250px"-->
+<!--        >Добавить</button>-->
+
+<!--      </div>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
+
+<h3>Cоздать организацию</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form
+    (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label>Название</label>
+      <input type="text" class="form-control" [(ngModel)]="name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label>ОГРН</label>
+      <input type="text" class="form-control"[(ngModel)]="ogrn" name="ogrn">
+    </div>
+<!--    <div class="form-group">-->
+<!--      <label for="name">Дата основания</label>-->
+<!--      <input type="datetime" class="form-control" id="dateFoundation" required [(ngModel)]="organization.dateFoundation" name="dateFoundation">-->
+<!--    </div>-->
+
+    <div class="form-group">
+      <label>Сотрудник</label>
+      <select type="text" class="form-control"  required [(ngModel)]="employeeId"  name="employee"  #select="ngModel">
+        <option *ngFor="let employeeTmp of employees"
+                    value="{{employeeTmp.id}}">{{employeeTmp.lastName}} {{employeeTmp.firstName}} {{employeeTmp.middleName}}</option>
+      </select>
+
+<!--      <select-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--     (change)="onSelectEmployee($event)">-->
+
+<!--        <option *ngFor="let employee of employees"-->
+<!--                [value]="employee.id"-->
+<!--        > {{employee.lastName + ' ' + employee.firstName + ' ' + (employee.middleName ? employee.middleName : '')}}</option>-->
+<!--      </select>-->
+
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="name">Мероприятие</label>-->
+<!--      <select-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        (change)="onSelectEvent($event)">-->
+
+<!--        <option *ngFor="let event of events"-->
+<!--                [value]="event.id"-->
+<!--        > {{event.name}}</option>-->
+<!--      </select>-->
+
+<!--    </div>-->
+<!--    <div class="form-group">-->
+<!--      <label for="name">Режим надзора</label>-->
+<!--      <select-->
+<!--        type="text"-->
+<!--        class="form-control"-->
+<!--        (change)="onSelectSupervisionmode($event)">-->
+
+<!--        <option *ngFor="let supervisionmode of supervisionmodes"-->
+<!--                [value]="supervisionmode.id"-->
+<!--        > {{supervisionmode.name}}</option>-->
+<!--      </select>-->
+
+    </div>
+    <div class="form-group">
+      <label>Мероприятие</label>
+      <select type="text" class="form-control"  required [(ngModel)]="eventId"  name="event"  #select="ngModel">
+        <option *ngFor="let eventTmp of events"
+                value="{{eventTmp.id}}">{{eventTmp.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Режим надзора</label>
+      <select type="text" class="form-control"  required [(ngModel)]="supervisionmodeId"  name="supervisionmode"  #select="ngModel">
+        <option *ngFor="let supervisionmodeTmp of supervisionmodes"
+                value="{{supervisionmodeTmp.id}}">{{supervisionmodeTmp.name}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+
+<div [hidden]="!submitted">
+  <h4>You submitted successfully!</h4>
+  <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
+</div>
+
