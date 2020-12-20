@@ -11,11 +11,14 @@ import { OrganizationComponent } from './components/organization/organization.co
 import { EventsCatalogComponent } from './components/events-catalog/events-catalog.component';
 import { SupervisionmodesCatalogComponent } from './components/supervisionmodes-catalog/supervisionmodes-catalog.component';
 import {AuthGuard} from './helpers/auth.guard';
-import {SupervisionmodeComponent} from './components/supervisionmode/supervisionmode.component';
-import {SupervisionmodeAddComponent} from './components/supervisionmode-add/supervisionmode-add.component';
-import {SupervisionmodeEditComponent} from './components/supervisionmode-edit/supervisionmode-edit.component';
+import {SupervisionModeComponent} from './components/supervisionmode/supervisionmode.component';
+import {SupervisionModeAddComponent} from './components/supervisionmode-add/supervisionmode-add.component';
+import {SupervisionModeEditComponent} from './components/supervisionmode-edit/supervisionmode-edit.component';
 import {OrganizationAddComponent} from './components/organization-add/organization-add.component';
 import {OrganizationEditComponent} from './components/organization-edit/organization-edit.component';
+import { EventAddComponent } from './components/event-add/event-add.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
+import { EventComponent } from './components/event/event.component';
 
 const routes: Routes = [
   // {path: '', redirectTo: 'supervisionmode', pathMatch: 'full'},
@@ -28,11 +31,14 @@ const routes: Routes = [
   {path: 'catalog/employees', component: EmployeesCatalogComponent},
   {path: 'catalog/events', component: EventsCatalogComponent},
   {path: 'catalog/supervisionmodes', component: SupervisionmodesCatalogComponent},
-  {path: 'supervisionmodes', component: SupervisionmodeComponent},
-  { path: 'supervisionmodes/add', component: SupervisionmodeAddComponent},
-  { path: 'update/:id', component: SupervisionmodeEditComponent },
+  {path: 'supervisionmodes', component: SupervisionModeComponent},
+  { path: 'supervisionmodes/add', component: SupervisionModeAddComponent},
+  { path: 'update/:id', component: SupervisionModeEditComponent },
   { path: 'organizations/add', component: OrganizationAddComponent},
-  { path: 'update/:id', component: OrganizationEditComponent },
+  { path: 'organizations/update/:id', component: OrganizationEditComponent },
+  {path: 'event', component: EventComponent},
+  { path: 'event/add', component: EventAddComponent},
+  { path: 'event/update/:id', component: EventEditComponent },
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
  // { path: '', redirectTo: 'employee', pathMatch: 'full' }
 

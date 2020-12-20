@@ -1,1 +1,53 @@
-<p>organization-edit works!</p>
+
+<div class="ml-5">
+<h3>Редактировать организацию</h3>
+<div [hidden]="submitted" style="width: 400px;">
+  <form (ngSubmit)="onSubmit()">
+
+    <div class="form-group">
+      <label>Название</label>
+      <input type="text" class="form-control" [(ngModel)]="organization.name" name="name">
+    </div>
+
+    <div class="form-group">
+      <label>ОГРН</label>
+      <input type="text" class="form-control"[(ngModel)]="organization.ogrn" name="ogrn">
+    </div>
+
+    <div class="form-group">
+      <label>Дата:</label>
+      <input matInput [matDatepicker]="picker" class="form-control"  [(ngModel)]="organization.dateFoundation" name="dateFoundation" required/>
+      <div class="text-right">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label>Сотрудник</label>
+      <select type="text" class="form-control"  required [(ngModel)]="employeeId"  name="employee"  #select="ngModel">
+        <option *ngFor="let employeeTmp of employees"
+                value="{{employeeTmp.id}}">{{employeeTmp.lastName}} {{employeeTmp.firstName}} {{employeeTmp.middleName}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Мероприятие</label>
+      <select type="text" class="form-control"  required [(ngModel)]="eventId"  name="event"  #select="ngModel">
+        <option *ngFor="let eventTmp of events"
+                value="{{eventTmp.id}}">{{eventTmp.name}}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label>Режим надзора</label>
+      <select type="text" class="form-control"  required [(ngModel)]="supervisionmodeId"  name="supervisionmode"  #select="ngModel">
+        <option *ngFor="let supervisionmodeTmp of supervisionmodes"
+                value="{{supervisionmodeTmp.id}}">{{supervisionmodeTmp.name}}</option>
+      </select>
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+  </form>
+</div>
+</div>
+

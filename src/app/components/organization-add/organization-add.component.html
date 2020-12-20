@@ -54,7 +54,6 @@
 <!--&lt;!&ndash;        </div>&ndash;&gt;-->
 
 
-
 <!--&lt;!&ndash;            <div class="form-field">&ndash;&gt;-->
 <!--&lt;!&ndash;              <div class="form-field__control-container">&ndash;&gt;-->
 <!--&lt;!&ndash;                <div class="form-field__label_required">&ndash;&gt;-->
@@ -120,11 +119,10 @@
 <!--    </form>-->
 <!--  </div>-->
 <!--</div>-->
-
-<h3>Cоздать организацию</h3>
+<div class="ml-5">
+<h3>Добавить организацию</h3>
 <div [hidden]="submitted" style="width: 400px;">
-  <form
-    (ngSubmit)="onSubmit()">
+  <form (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label>Название</label>
       <input type="text" class="form-control" [(ngModel)]="name" name="name">
@@ -132,60 +130,92 @@
 
     <div class="form-group">
       <label>ОГРН</label>
-      <input type="text" class="form-control"[(ngModel)]="ogrn" name="ogrn">
+      <input type="text" class="form-control" [(ngModel)]="ogrn" name="ogrn">
     </div>
-<!--    <div class="form-group">-->
-<!--      <label for="name">Дата основания</label>-->
-<!--      <input type="datetime" class="form-control" id="dateFoundation" required [(ngModel)]="organization.dateFoundation" name="dateFoundation">-->
-<!--    </div>-->
+    <!--    <div class="form-group">-->
+    <!--      <label for="name">Дата основания</label>-->
+    <!--      <input type="datetime" class="form-control" id="dateFoundation" required [(ngModel)]="organization.dateFoundation" name="dateFoundation">-->
+    <!--    </div>-->
+
+    <div class="form-group">
+      <mat-label>Дата основания:</mat-label>
+
+      <input matInput [matDatepicker]="picker"  [(ngModel)]="dateFoundation" name="dateFoundation"
+             required/>
+      <div class="text-right">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      </div>
+      <mat-datepicker #picker></mat-datepicker>
+    </div>
+
+    <!--    <div class="form-group">-->
+    <!--      <label>Дата основания</label>-->
+    <!--        <div class="dp-date-wrapper">-->
+    <!--          <div class="dp-date-input-container">-->
+    <!--            <div class="dp-form-item">-->
+    <!--              <dp-date-picker id="picker"-->
+    <!--                              [config]="config"-->
+    <!--                              [mode]="'daytime'"-->
+    <!--                              [theme]="material ? 'dp-material dp-main' : 'dp-main'"-->
+    <!--                              [displayDate]="displayDate"-->
+    <!--                              [formControlName]="'dateFoundation'"-->
+    <!--                              [minDate]="minDate"-->
+    <!--                              [maxDate]="maxDate"-->
+    <!--                              [minTime]="minTime"-->
+    <!--                              [maxTime]="maxTime"-->
+    <!--              ></dp-date-picker>-->
+    <!--            </div>-->
+    <!--          </div>-->
+    <!--        </div>-->
+    <!--      </div>-->
 
     <div class="form-group">
       <label>Сотрудник</label>
-      <select type="text" class="form-control"  required [(ngModel)]="employeeId"  name="employee"  #select="ngModel">
+      <select type="text" class="form-control" required [(ngModel)]="employeeId" name="employee" #select="ngModel">
         <option *ngFor="let employeeTmp of employees"
-                    value="{{employeeTmp.id}}">{{employeeTmp.lastName}} {{employeeTmp.firstName}} {{employeeTmp.middleName}}</option>
+                value="{{employeeTmp.id}}">{{employeeTmp.lastName}} {{employeeTmp.firstName}} {{employeeTmp.middleName}}</option>
       </select>
 
-<!--      <select-->
-<!--        type="text"-->
-<!--        class="form-control"-->
-<!--     (change)="onSelectEmployee($event)">-->
+      <!--      <select-->
+      <!--        type="text"-->
+      <!--        class="form-control"-->
+      <!--     (change)="onSelectEmployee($event)">-->
 
-<!--        <option *ngFor="let employee of employees"-->
-<!--                [value]="employee.id"-->
-<!--        > {{employee.lastName + ' ' + employee.firstName + ' ' + (employee.middleName ? employee.middleName : '')}}</option>-->
-<!--      </select>-->
+      <!--        <option *ngFor="let employee of employees"-->
+      <!--                [value]="employee.id"-->
+      <!--        > {{employee.lastName + ' ' + employee.firstName + ' ' + (employee.middleName ? employee.middleName : '')}}</option>-->
+      <!--      </select>-->
 
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--      <label for="name">Мероприятие</label>-->
-<!--      <select-->
-<!--        type="text"-->
-<!--        class="form-control"-->
-<!--        (change)="onSelectEvent($event)">-->
+      <!--    </div>-->
+      <!--    <div class="form-group">-->
+      <!--      <label for="name">Мероприятие</label>-->
+      <!--      <select-->
+      <!--        type="text"-->
+      <!--        class="form-control"-->
+      <!--        (change)="onSelectEvent($event)">-->
 
-<!--        <option *ngFor="let event of events"-->
-<!--                [value]="event.id"-->
-<!--        > {{event.name}}</option>-->
-<!--      </select>-->
+      <!--        <option *ngFor="let event of events"-->
+      <!--                [value]="event.id"-->
+      <!--        > {{event.name}}</option>-->
+      <!--      </select>-->
 
-<!--    </div>-->
-<!--    <div class="form-group">-->
-<!--      <label for="name">Режим надзора</label>-->
-<!--      <select-->
-<!--        type="text"-->
-<!--        class="form-control"-->
-<!--        (change)="onSelectSupervisionmode($event)">-->
+      <!--    </div>-->
+      <!--    <div class="form-group">-->
+      <!--      <label for="name">Режим надзора</label>-->
+      <!--      <select-->
+      <!--        type="text"-->
+      <!--        class="form-control"-->
+      <!--        (change)="onSelectSupervisionmode($event)">-->
 
-<!--        <option *ngFor="let supervisionmode of supervisionmodes"-->
-<!--                [value]="supervisionmode.id"-->
-<!--        > {{supervisionmode.name}}</option>-->
-<!--      </select>-->
+      <!--        <option *ngFor="let supervisionmode of supervisionmodes"-->
+      <!--                [value]="supervisionmode.id"-->
+      <!--        > {{supervisionmode.name}}</option>-->
+      <!--      </select>-->
 
     </div>
     <div class="form-group">
       <label>Мероприятие</label>
-      <select type="text" class="form-control"  required [(ngModel)]="eventId"  name="event"  #select="ngModel">
+      <select type="text" class="form-control" required [(ngModel)]="eventId" name="event" #select="ngModel">
         <option *ngFor="let eventTmp of events"
                 value="{{eventTmp.id}}">{{eventTmp.name}}</option>
       </select>
@@ -193,7 +223,8 @@
 
     <div class="form-group">
       <label>Режим надзора</label>
-      <select type="text" class="form-control"  required [(ngModel)]="supervisionmodeId"  name="supervisionmode"  #select="ngModel">
+      <select type="text" class="form-control" required [(ngModel)]="supervisionmodeId" name="supervisionmode"
+              #select="ngModel">
         <option *ngFor="let supervisionmodeTmp of supervisionmodes"
                 value="{{supervisionmodeTmp.id}}">{{supervisionmodeTmp.name}}</option>
       </select>
@@ -207,3 +238,4 @@
   <!-- <button class="btn btn-success" (click)="newEmployee()">Add</button> -->
 </div>
 
+</div>

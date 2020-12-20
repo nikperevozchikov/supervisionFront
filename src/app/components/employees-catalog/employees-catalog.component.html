@@ -26,10 +26,6 @@
                         [value]="employee.position.name"
             ></data-field>
 
-            <data-field [name]="'Емэйл'"
-                        [value]="employee.email"
-            ></data-field>
-
           </div>
 
           <div class="controls">
@@ -37,7 +33,7 @@
                     class="button medium"
                     [ngClass]="'available-width'"
                     (click)="onCreateOrganization(employee.id)"
-            >OK
+            >Добавить
             </button>
           </div>
         </div>

@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import {RestService} from './rest.service';
 import {Observable, of} from 'rxjs';
-import {Supervisionmode} from '../app/models/supervisionmode.model';
+import {SupervisionMode} from '../app/models/supervisionmode.model';
 import {Organization} from '../app/models/organization.model';
 import {Event} from '../app/models/event.model';
 

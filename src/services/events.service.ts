@@ -9,30 +9,28 @@ import {Organization} from '../app/models/organization.model';
 })
 export class EventsService {
 
-  private commonUrl = 'api/events';
+  private commonUrl = 'api/ev/events';
 
   constructor(
     private restService: RestService
   ) {
   }
+  public getEvent(id: number): Observable<any> {
+    return this.restService.get(`${this.commonUrl}/${id}`);
+  }
+  // tslint:disable-next-line:ban-types
+  createEvent(event: Object): Observable<Object> {
+    return this.restService.post(`${this.commonUrl}`, event);
+  }
+  // tslint:disable-next-line:ban-types
+  updateEvent(id: number, value: any): Observable<Object> {
+    return this.restService.put(`${this.commonUrl}/${id}`, value);
 
-  // public getAll(): Observable<Event[]> {
-  //   return this.restService.get(`${this.commonUrl}/get/all`);
-  // }
-  public getById(id: number): Observable<any> {
-    return this.restService.get(`${this.commonUrl}/get/${id}`);
   }
-  public getAll(): Observable<any> {
-    return this.restService.get(`${this.commonUrl}/get/all`);
+  deleteEvent(id: number): Observable<any> {
+    return this.restService.delete(`${this.commonUrl}/${id}`, {  responseType: 'text' as 'json' });
   }
-  public save(event: any): Observable<any> {
-    return this.restService.put(`${this.commonUrl}/save`, event);
-  }
-
-  public delete(event: Event): Observable<any> {
-    return this.restService.delete(`${this.commonUrl}/delete/${event.id}`);
-  }
-  deleteById(id: number): Observable<any> {
-    return this.restService.delete(`${this.commonUrl}/delete/${id}`);
+  getEventsList(): Observable<any> {
+    return this.restService.get(`${this.commonUrl}`);
   }
 }

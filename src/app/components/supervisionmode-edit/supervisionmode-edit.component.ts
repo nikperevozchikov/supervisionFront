@@ -2,22 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
-import {Supervisionmode} from '../../models/supervisionmode.model';
+import {SupervisionMode} from '../../models/supervisionmode.model';
 @Component({
   selector: 'app-supervisionmode-edit',
   templateUrl: './supervisionmode-edit.component.html',
   styleUrls: ['./supervisionmode-edit.component.less']
 })
-export class SupervisionmodeEditComponent implements OnInit {
+export class SupervisionModeEditComponent implements OnInit {
 
   id: number;
-  supervisionmode: Supervisionmode;
+  supervisionmode: SupervisionMode;
 
   constructor(private route: ActivatedRoute, private router: Router,
               private supervisionmodesService: SupervisionmodesService) { }
 
   ngOnInit() {
-    this.supervisionmode = new Supervisionmode();
+    this.supervisionmode = new SupervisionMode();
 
     this.id = this.route.snapshot.params.id;
 
@@ -32,7 +32,7 @@ export class SupervisionmodeEditComponent implements OnInit {
     this.supervisionmodesService.updateSupervisionmode(this.id, this.supervisionmode)
       .subscribe(data => {
         console.log(data);
-        this.supervisionmode = new Supervisionmode();
+        this.supervisionmode = new SupervisionMode();
         this.gotoList();
       }, error => console.log(error));
   }

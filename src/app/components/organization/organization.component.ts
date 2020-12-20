@@ -30,7 +30,7 @@ import * as moment from 'moment';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationService} from '../../../services/notification.service';
 import {Constants} from '../../common/constants.utils';
-import {Supervisionmode} from '../../models/supervisionmode.model';
+import {SupervisionMode} from '../../models/supervisionmode.model';
 import {Organization} from '../../models/organization.model';
 import {Observable} from 'rxjs';
 @Component({
@@ -87,7 +87,7 @@ export class OrganizationComponent implements OnInit {
   }
 
   updateOrganization(id: number){
-    this.router.navigate(['update', id]);
+    this.router.navigate(['organizations/update', id]);
   }
 
 }

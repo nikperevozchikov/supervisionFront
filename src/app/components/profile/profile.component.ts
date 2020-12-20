@@ -18,9 +18,6 @@ import {NgxSpinnerService} from 'ngx-spinner';
   styleUrls: ['./profile.component.less']
 })
 export class ProfileComponent implements OnInit {
-
-  /* TODO Сделать не ручные флаги! */
-
   // tslint:disable-next-line:variable-name
   private _nameForm: FormGroup;
   // tslint:disable-next-line:variable-name
@@ -107,47 +104,47 @@ export class ProfileComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  // onSaveName(org: Organization) {
-  //   org.name = this.nameForm.value.name;
-  //   if (org.name) {
-  //     this.organizationsService.save(org)
-  //       .subscribe(() => {
-  //         this.ns.info(`Названия успешно сохранены для организации № ${org.id}`);
-  //       }, (error) => {
-  //         this.ns.error(`Ошибка добавления названий. Проверьте введенные данные.`);
-  //         console.error(error);
-  //       });
-  //   } else {
-  //     this.ns.error('Поле не может быть пустым', 5);
-  //   }
-  // }
+  onSaveName(org: Organization) {
+    org.name = this.nameForm.value.name;
+    if (org.name) {
+      this.organizationsService.updateOrganization(org.id, org)
+        .subscribe(() => {
+          this.ns.info(`Названия успешно сохранены для организации № ${org.id}`);
+        }, (error) => {
+          this.ns.error(`Ошибка добавления названий. Проверьте введенные данные.`);
+          console.error(error);
+        });
+    } else {
+      this.ns.error('Поле не может быть пустым', 5);
+    }
+  }
 
   // tslint:disable-next-line:typedef
-  // onSaveDateTime(org: Organization) {
-  //   const moment: Moment = this.dateTimeForm.value.dateTime;
-  //   org.dateFoundation = moment.format('DD.MM.YYYY HH:mm');
-  //   this.organizationsService.save(org)
-  //     .subscribe(() => {
-  //       this.ns.info('Время организации изменено.');
-  //     }, (error) => {
-  //       this.ns.error('Ошибка изменения времени организации. Проверьте введенные данные.');
-  //       console.error(error);
-  //     });
-  // }
+  onSaveDateTime(org: Organization) {
+    const moment: Moment = this.dateTimeForm.value.dateTime;
+    org.dateFoundation = moment.format('DD.MM.YYYY HH:mm');
+    this.organizationsService.updateOrganization(org.id, org)
+      .subscribe(() => {
+        this.ns.info('Время организации изменено.');
+      }, (error) => {
+        this.ns.error('Ошибка изменения времени организации. Проверьте введенные данные.');
+        console.error(error);
+      });
+  }
 
   // tslint:disable-next-line:typedef
-  // onCancelOrganization(org: Organization) {
-  //   const localIndex = this.organizationsList.indexOf(org);
-  //   if (localIndex > -1) {
-  //     this.organizationsList.splice(localIndex, 1);
-  //     this.organizationsService.delete(org)
-  //       .subscribe(() => {
-  //         this.ns.info(`Организация № ${org.name} успешно удалена.`);
-  //       }, (error) => {
-  //         this.ns.error('Ошибка удаления организации.');
-  //         console.error(error);
-  //       });
-  //   }
-  // }
+  onCancelOrganization(org: Organization) {
+    const localIndex = this.organizationsList.indexOf(org);
+    if (localIndex > -1) {
+      this.organizationsList.splice(localIndex, 1);
+      this.organizationsService.deleteOrganization(org.id)
+        .subscribe(() => {
+          this.ns.info(`Организация № ${org.name} успешно удалена.`);
+        }, (error) => {
+          this.ns.error('Ошибка удаления организации.');
+          console.error(error);
+        });
+    }
+  }
 
 }

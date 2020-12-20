@@ -50,7 +50,7 @@ export class EmployeesCatalogComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   onCreateOrganization(employeeId: number) {
-    this.router.navigate(['orgs/create'], {
+    this.router.navigate(['organizations/add'], {
       queryParams: {
         employeeId
       }

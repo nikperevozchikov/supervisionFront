@@ -2,5 +2,5 @@ export class Event {
   id: number;
   name: string;
   resultOfEvent: string;
-  // dateOfEvent: string;
+  dateOfEvent: string;
 }

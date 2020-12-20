@@ -15,11 +15,9 @@ export class EmployeesService {
     private restService: RestService
   ) { }
 
-  // public getAll(): Observable<Employee[]> {
-  //   return this.restService.get(`${this.commonUrl}/get/all`);
-  // }
+
   public getById(id: number): Observable<any> {
-    return this.restService.get(`${this.commonUrl}/get/${id}`);
+    return this.restService.get(`${this.commonUrl}/get${id}`);
   }
   public getAll(): Observable<any> {
     return this.restService.get(`${this.commonUrl}/get/all`);

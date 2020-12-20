@@ -17,7 +17,7 @@ import * as moment from 'moment';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationService} from '../../../services/notification.service';
 import {Constants} from '../../common/constants.utils';
-import {Supervisionmode} from '../../models/supervisionmode.model';
+import {SupervisionMode} from '../../models/supervisionmode.model';
 import {Organization} from '../../models/organization.model';
 
 @Component({
@@ -53,7 +53,7 @@ export class CreateOrganizationFormComponent implements OnInit {
   // tslint:disable-next-line:variable-name
   private _events: Event[] = [];
   // tslint:disable-next-line:variable-name
-  private _supervisionmodes: Supervisionmode[] = [];
+  private _supervisionmodes: SupervisionMode[] = [];
   // tslint:disable-next-line:variable-name
   private _organizations: Organization[] = [];
   // tslint:disable-next-line:variable-name
@@ -114,7 +114,7 @@ export class CreateOrganizationFormComponent implements OnInit {
     return this._events;
   }
 
-  get supervisionmodes(): Supervisionmode[] {
+  get supervisionmodes(): SupervisionMode[] {
     return this._supervisionmodes;
   }
 
@@ -177,7 +177,7 @@ export class CreateOrganizationFormComponent implements OnInit {
       }, (error) => {
         console.error(error);
       });
-    this.eventsService.getAll()
+    this.eventsService.getEventsList()
       .subscribe((list: Event[] = []) => {
         if (list && list.length > 0) {
         this._events = list;

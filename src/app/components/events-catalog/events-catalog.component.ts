@@ -29,7 +29,7 @@ export class EventsCatalogComponent implements OnInit {
 
   ngOnInit(): void {
     this.overlayService.show();
-    this.eventsService.getAll()
+    this.eventsService.getEventsList()
       .subscribe((data) => {
         this._eventsList = data;
       }, (error) => {

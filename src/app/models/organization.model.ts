@@ -1,15 +1,15 @@
 import {Employee, Position} from './employee.model';
 import {Event} from './event.model';
-import {Supervisionmode} from './supervisionmode.model';
+import {SupervisionMode} from './supervisionmode.model';
 import {Role} from './role.model';
 export class Organization {
   id: number;
   name: string;
   ogrn: string;
-  // dateFoundation?: string;
+  dateFoundation?: string;
   employee: Employee;
   event: Event;
-  supervisionmode: Supervisionmode;
+  supervisionMode: SupervisionMode;
   // constructor(name: string, ogrn: string,  employee: Employee, event: Event, supervisionmode: Supervisionmode) {
   //
   //  this.name = name;

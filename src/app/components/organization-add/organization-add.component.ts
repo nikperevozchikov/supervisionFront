@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import {ActivatedRoute, Router} from '@angular/router';
 import {NotificationService} from '../../../services/notification.service';
 import {Constants} from '../../common/constants.utils';
-import {Supervisionmode} from '../../models/supervisionmode.model';
+import {SupervisionMode} from '../../models/supervisionmode.model';
 import {Organization} from '../../models/organization.model';
 import {Observable} from 'rxjs';
 import {Employee, Position} from '../../models/employee.model';
@@ -24,16 +24,31 @@ import {AuthenticationService} from '../../../services/authentication.service';
   styleUrls: ['./organization-add.component.less']
 })
 export class OrganizationAddComponent implements OnInit {
+  // public config: IDatePickerConfig = {
+  //   format: 'DD.MM.YYYY HH:mm',
+  //   showTwentyFourHours: true,
+  //   showSeconds: false,
+  //   minutesInterval: 30,
+  //   firstDayOfWeek: 'mo'
+  // };
+  // public material = true;
+  // public displayDate: Moment | string;
+  // public loading = true;
+  //
+  // public minDate: Moment | string;
+  // public maxDate: Moment | string;
+  // public minTime: Moment | string;
+  // public maxTime: Moment | string;
   organization = new Organization();
   employees: Employee[];
   employeeId: number;
   events: Event[];
   eventId: number;
-  supervisionmodes: Supervisionmode[];
+  supervisionmodes: SupervisionMode[];
   supervisionmodeId: number;
   name: string;
   ogrn: string;
- // dateFoundation: string;
+  dateFoundation: Date;
   submitted = false;
 
   constructor(private organizationsService: OrganizationsService,
@@ -56,7 +71,7 @@ private fillEmployee(): void{
 
 // tslint:disable-next-line:typedef
 private fillEvent(): void{
-  this.eventsService.getAll().subscribe(data => this.events = data);
+  this.eventsService.getEventsList().subscribe(data => this.events = data);
 }
 // tslint:disable-next-line:typedef
   private fillSupervisionmode(): void{
@@ -77,7 +92,7 @@ private fillEvent(): void{
     // tslint:disable-next-line:triple-equals
     return this.events.filter(event => event.id == id)[0];
   }
-  private chooseSupervisionmode(id: number): Supervisionmode {
+  private chooseSupervisionmode(id: number): SupervisionMode {
     debugger;
     // tslint:disable-next-line:triple-equals
     return this.supervisionmodes.filter(supervisionmode => supervisionmode.id == id)[0];
@@ -85,11 +100,14 @@ private fillEvent(): void{
   save() {
     // tslint:disable-next-line:no-debugger
     debugger;
+    let date = new Date(this.dateFoundation);
+    date = new Date(date.getTime() - date.getTimezoneOffset() * 60000);
+    this.organization.dateFoundation = date.toISOString().split('T')[0];
     this.organization.name = this.name;
     this.organization.ogrn = this.ogrn;
     this.organization.employee = this.chooseEmployee(this.employeeId);
     this.organization.event = this.chooseEvent(this.eventId);
-    this.organization.supervisionmode = this.chooseSupervisionmode(this.supervisionmodeId);
+    this.organization.supervisionMode = this.chooseSupervisionmode(this.supervisionmodeId);
     this.organizationsService
       .createOrganization(this.organization).subscribe(data => {
         console.log(data);

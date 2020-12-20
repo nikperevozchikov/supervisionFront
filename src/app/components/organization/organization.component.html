@@ -1,3 +1,4 @@
+<div class="ml-5">
 <div class="panel panel-primary">
   <div class="panel-heading">
     <h2>Список организаций</h2>
@@ -13,6 +14,7 @@
       <tr>
         <th>Название организации</th>
         <th>ОГРН</th>
+        <th>Дата основания</th>
         <th>Сотрудник</th>
         <th>Мероприятие</th>
         <th>Режим надзора</th>
@@ -23,12 +25,13 @@
       <tr *ngFor="let organization of organizations| async">
         <td>{{organization.name}}</td>
         <td>{{organization.ogrn}}</td>
+        <td>{{organization.dateFoundation}}</td>
         <td>{{organization.employee.lastName}} {{organization.employee.firstName}}
-          {{organization.employee.middleName}}}</td>
+          {{organization.employee.middleName}}</td>
         <td>{{organization.event.name}}</td>
-        <td>{{organization.supervisionmode.name}}</td>
-        <td><button (click)="deleteOrganization(organization.id)" class="btn btn-danger">Delete</button>
-          <button (click)="updateOrganization(organization.id)" class="btn btn-info" style="margin-left: 10px">Update</button>
+        <td>{{organization.supervisionMode.name}}</td>
+        <td><button (click)="deleteOrganization(organization.id)" class="btn btn-danger">Удалить</button>
+          <button (click)="updateOrganization(organization.id)" class="btn btn-info" style="margin-left: 10px">Изменить</button>
 
         </td>
       </tr>
@@ -36,4 +39,4 @@
     </table>
   </div>
 </div>
-
+</div>

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
-import {Supervisionmode} from '../../models/supervisionmode.model';
+import {SupervisionMode} from '../../models/supervisionmode.model';
 import {Organization} from '../../models/organization.model';
 import {Event} from '../../models/event.model';
 import {Employee} from '../../models/employee.model';
@@ -15,8 +15,8 @@ import {NgxSpinnerService} from 'ngx-spinner';
   templateUrl: './supervisionmode.component.html',
   styleUrls: ['./supervisionmode.component.less']
 })
-export class SupervisionmodeComponent implements OnInit {
-  supervisionmodes: Observable<Supervisionmode[]>;
+export class SupervisionModeComponent implements OnInit {
+  supervisionmodes: Observable<SupervisionMode[]>;
 
   constructor(private supervisionmodesService: SupervisionmodesService,
               private router: Router) {}

@@ -26,12 +26,25 @@ import {DatePipe} from '@angular/common';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {EventsCatalogComponent} from './components/events-catalog/events-catalog.component';
 import {SupervisionmodesCatalogComponent} from './components/supervisionmodes-catalog/supervisionmodes-catalog.component';
-import {SupervisionmodeComponent} from './components/supervisionmode/supervisionmode.component';
-import { SupervisionmodeAddComponent } from './components/supervisionmode-add/supervisionmode-add.component';
-import { SupervisionmodeEditComponent } from './components/supervisionmode-edit/supervisionmode-edit.component';
+import {SupervisionModeComponent} from './components/supervisionmode/supervisionmode.component';
+import { SupervisionModeAddComponent } from './components/supervisionmode-add/supervisionmode-add.component';
+import { SupervisionModeEditComponent } from './components/supervisionmode-edit/supervisionmode-edit.component';
 import { OrganizationAddComponent } from './components/organization-add/organization-add.component';
 import { OrganizationEditComponent } from './components/organization-edit/organization-edit.component';
-
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatSelectModule} from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialogModule} from '@angular/material/dialog';
+import {MatButtonModule} from '@angular/material/button';
+import {MatNativeDateModule} from '@angular/material/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { EventAddComponent } from './components/event-add/event-add.component';
+import { EventEditComponent } from './components/event-edit/event-edit.component';
+import { EventComponent } from './components/event/event.component';
+import { EmployeeComponent } from './components/employee/employee.component';
+import { EmployeeAddComponent } from './components/employee-add/employee-add.component';
+import { EmployeeEditComponent } from './components/employee-edit/employee-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,23 +61,36 @@ import { OrganizationEditComponent } from './components/organization-edit/organi
     OrganizationComponent,
     EventsCatalogComponent,
     SupervisionmodesCatalogComponent,
-    SupervisionmodeComponent,
-    SupervisionmodeAddComponent,
-    SupervisionmodeEditComponent,
+    SupervisionModeComponent,
+    SupervisionModeAddComponent,
+    SupervisionModeEditComponent,
     OrganizationAddComponent,
-    OrganizationEditComponent
+    OrganizationEditComponent,
+    EventAddComponent,
+    EventEditComponent,
+    EventComponent,
+    EmployeeComponent,
+    EmployeeAddComponent,
+    EmployeeEditComponent
   ],
-  imports: [
-    BrowserModule,
-    NgxSpinnerModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    NgbModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    DpDatePickerModule
-  ],
+    imports: [
+        BrowserModule,
+        NgxSpinnerModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        NgbModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        DpDatePickerModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
+        MatCheckboxModule,
+        MatSelectModule,
+        MatNativeDateModule,
+        MatDatepickerModule
+    ],
   providers: [
     RestService,
     DatePipe,

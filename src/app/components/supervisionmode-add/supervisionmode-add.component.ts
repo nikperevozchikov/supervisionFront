@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { Observable } from 'rxjs';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
-import {Supervisionmode} from '../../models/supervisionmode.model';
+import {SupervisionMode} from '../../models/supervisionmode.model';
 @Component({
   selector: 'app-supervisionmode-add',
   templateUrl: './supervisionmode-add.component.html',
   styleUrls: ['./supervisionmode-add.component.less']
 })
-export class SupervisionmodeAddComponent implements OnInit {
-  supervisionmode: Supervisionmode = new Supervisionmode();
+export class SupervisionModeAddComponent implements OnInit {
+  supervisionmode: SupervisionMode = new SupervisionMode();
   submitted = false;
 
   constructor(private supervisionmodesService: SupervisionmodesService,
@@ -21,14 +21,14 @@ export class SupervisionmodeAddComponent implements OnInit {
 
   newSupervisionmode(): void {
     this.submitted = false;
-    this.supervisionmode = new Supervisionmode();
+    this.supervisionmode = new SupervisionMode();
   }
 
   save() {
     this.supervisionmodesService
       .createSupervisionmode(this.supervisionmode).subscribe(data => {
         console.log(data);
-        this.supervisionmode = new Supervisionmode();
+        this.supervisionmode = new SupervisionMode();
         this.gotoList();
       },
       error => console.log(error));

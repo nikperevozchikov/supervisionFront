@@ -61,9 +61,9 @@
         </ng-container>
         <!-- for имплое -->
         <ng-container *ngSwitchCase="'EMPLOYEE'">
-          <data-field [name]="'Дата рождения'"
-                      [value]="currentUser.birthday"
-          ></data-field>
+<!--          <data-field [name]="'Дата рождения'"-->
+<!--                      [value]="currentUser.birthday"-->
+<!--          ></data-field>-->
           <data-field [name]="'Адрес регистрации'"
                       [value]="currentUser.registrationAddress"
           ></data-field>
@@ -77,21 +77,14 @@
 <ng-template #organizations>
   <div>
     <ng-container [ngSwitch]="currentUser.role">
-      <ng-container *ngSwitchCase="'EMPLOYEE'">
-        Здесь вы можете посмотреть организации, к которым вы прикреплены.
-        <button class="button medium"
-                style="width: 250px; margin-left: 20px"
-                routerLink="/orgs/create"
-        >Прикрепить</button>
-      </ng-container>
-<!--      <ng-container *ngSwitchCase="'DOCTOR'">-->
-<!--        Здесь вы можете посмотреть талоны на прием к Вам.-->
-<!--        <br/>-->
-<!--        <span style="font-size: 11pt; color: darkslateblue;">-->
-<!--          Обратите внимание: чтобы записаться на прием, Вам нужно перезайти через-->
-<!--          профиль пациента.-->
-<!--        </span>-->
+<!--      <ng-container *ngSwitchCase="'EMPLOYEE'">-->
+<!--        Здесь вы можете посмотреть организации, к которым вы прикреплены.-->
+<!--        <button class="button medium"-->
+<!--                style="width: 250px; margin-left: 20px"-->
+<!--                routerLink="/orgs/create"-->
+<!--        >Прикрепить</button>-->
 <!--      </ng-container>-->
+
     </ng-container>
   </div>
 
@@ -107,7 +100,7 @@
           <data-field [name]="'Сотрудник'"
                       [value]="[org.employee.lastName, org.employee.firstName, org.employee.middleName || ''].join(' ')"
           ></data-field>
-          <data-field [name]="'Время организации'"
+          <data-field [name]="'Дата основания организации'"
                       [value]="org.dateFoundation"
           ></data-field>
           <data-field [name]="'Должность'"
@@ -156,39 +149,36 @@
               </popup>
             </ng-container>
           </ng-container>
-          <popup [type]="'form'"
-                 [popupTitle]="'Изменить время организации'"
-                 [buttonTitle]="'Изменить время организации'"
-                 [styles]="'available-width'"
-                 [formGroup]="dateTimeForm"
-                 (onSubmit)="onSaveDateTime(org)"
-          >
-            <div style="display: flex; flex-direction: column">
-              Введите другое время работы с организацией:
-              <div class="dp-date-wrapper">
-                <div class="dp-date-input-container">
-                  <div class="dp-form-item">
-                    <dp-date-picker id="picker"
-                                    [config]="config"
-                                    [mode]="'daytime'"
-                                    [theme]="material ? 'dp-material dp-main' : 'dp-main'"
-                                    [displayDate]="displayDate"
-                                    [placeholder]="placeholder"
-                                    [formControlName]="'dateTime'"
-                    ></dp-date-picker>
-                  </div>
-                </div>
-              </div>
-            </div>
+<!--          <popup [type]="'form'"-->
+<!--                 [popupTitle]="'Изменить время организации'"-->
+<!--                 [buttonTitle]="'Изменить время организации'"-->
+<!--                 [styles]="'available-width'"-->
+<!--                 [formGroup]="dateTimeForm"-->
+<!--                 (onSubmit)="onSaveDateTime(org)"-->
+<!--          >-->
+<!--            <div style="display: flex; flex-direction: column">-->
+<!--              Введите другое время работы с организацией:-->
+<!--              <div class="dp-date-wrapper">-->
+<!--                <div class="dp-date-input-container">-->
+<!--                  <div class="dp-form-item">-->
+<!--                    <dp-date-picker id="picker"-->
+<!--                                    [config]="config"-->
+<!--                                    [mode]="'daytime'"-->
+<!--                                    [theme]="material ? 'dp-material dp-main' : 'dp-main'"-->
+<!--                                    [displayDate]="displayDate"-->
+<!--                                    [placeholder]="placeholder"-->
+<!--                                    [formControlName]="'dateTime'"-->
+<!--                    ></dp-date-picker>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--            </div>-->
 
-            <div style="color: gray;margin:10px 0;">
-              Если ячейка календаря выделена серым цветом, значит это выходной день
-
-              <br/><br/>
-              <a href="mailto:support@nadzor.ru">Напишите нам</a>,
-              если считаете, что время назначено по ошибке.
-            </div>
-          </popup>
+<!--            <div style="color: gray;margin:10px 0;">-->
+<!--              <a href="mailto:support@nadzor.ru">Напишите нам</a>,-->
+<!--              если считаете, что время назначено по ошибке.-->
+<!--            </div>-->
+<!--          </popup>-->
           <popup [popupTitle]="'Удалить организацию?'"
                  [buttonTitle]="'Удалить организацию'"
                  [styles]="'reject-button available-width'"
