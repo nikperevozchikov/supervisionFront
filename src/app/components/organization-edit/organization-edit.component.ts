@@ -40,9 +40,6 @@ export class OrganizationEditComponent implements OnInit {
   ngOnInit() {
     debugger;
     this.organization = new Organization();
-    // this.employeeId = this.organization.employee.id;
-    // this.eventId = this.organization.event.id;
-    // this.supervisionmodeId =  this.organization.supervisionMode.id;
     this.id = this.route.snapshot.params.id;
     this.organizationsService.getOrganization(this.id)
       .subscribe(data => {
@@ -69,10 +66,7 @@ export class OrganizationEditComponent implements OnInit {
   private fillSupervisionmode(): void{
     this.supervisionmodesService.getSupervisionmodesList().subscribe(data => this.supervisionmodes = data);
   }
-  // newSupervisionmode(): void {
-  //   this.submitted = false;
-  //   this.supervisionmode = new Supervisionmode();
-  // }
+
   private chooseEmployee(id: number): Employee {
     debugger;
     // tslint:disable-next-line:triple-equals

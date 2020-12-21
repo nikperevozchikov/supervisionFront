@@ -41,9 +41,9 @@
   <div style="display: flex; margin:25px 0;">
     <!-- avatar -->
     <div style="display: flex; flex-direction: column;text-align: center">
-      <img src="https://images.app.goo.gl/TxpCoweErzXajNpA6"
+      <img src="https://www.w3schools.com/howto/img_avatar.png"
            style="width: 140px; border-radius: 10px"
-           alt="Фото профиля"
+           alt="Фото сотрудника"
       />
     </div>
     <!-- main data -->
@@ -53,7 +53,6 @@
       ></data-field>
 
       <ng-container [ngSwitch]="currentUser.role">
-        <!-- for doctor -->
         <ng-container *ngSwitchCase="'EMPLOYEE'">
           <data-field [name]="'Должность'"
                       [value]="currentUser.position.name"
@@ -77,13 +76,13 @@
 <ng-template #organizations>
   <div>
     <ng-container [ngSwitch]="currentUser.role">
-<!--      <ng-container *ngSwitchCase="'EMPLOYEE'">-->
+      <ng-container *ngSwitchCase="'ADMIN'">
 <!--        Здесь вы можете посмотреть организации, к которым вы прикреплены.-->
 <!--        <button class="button medium"-->
 <!--                style="width: 250px; margin-left: 20px"-->
 <!--                routerLink="/orgs/create"-->
 <!--        >Прикрепить</button>-->
-<!--      </ng-container>-->
+      </ng-container>
 
     </ng-container>
   </div>
@@ -93,7 +92,7 @@
          class="ticket"
     >
       <div class="ticket__header">
-        Организация № {{org.id}}
+         {{org.name}}
       </div>
       <div class="ticket__content">
         <div class="data">
@@ -112,42 +111,42 @@
           <ng-container [ngSwitch]="currentUser.role">
             <ng-container *ngSwitchCase="'EMPLOYEE'">
               <popup *ngIf="org.name"
-                     [popupTitle]="'Мои организации'"
-                     [buttonTitle]="'Мои организации'"
+                     [popupTitle]="'Организации сотрудника'"
+                     [buttonTitle]="'Организации сотрудника'"
                      [styles]="'outline available-width'"
               >
                 {{org.name}}
               </popup>
             </ng-container>
-            <ng-container *ngSwitchCase="'ADMIN'">
-              <popup [type]="org.name ? 'info' : 'form'"
-                     [popupTitle]="'Добавить организации сотруднику'"
-                     [buttonTitle]="org.name ? 'Назначения' : 'Добавить организации'"
-                     [styles]="'outline available-width'"
-                     [formGroup]="nameForm"
-                     (onSubmit)="onSaveName(org)"
-              >
-                <ng-container *ngIf="org.name; then readonlyName else editableName"
-                ></ng-container>
-                <ng-template #readonlyName>
-                  {{org.name}}
-                </ng-template>
-                <ng-template #editableName>
-                  <label style="width: 100%;">
-                    Введите название:
-                    <textarea class="input-control"
-                              style="width: 100%; height: 200px;"
-                              placeholder="Например, ООО Микрофинанс."
-                              [formControlName]="'name'"
-                    ></textarea>
-                  </label>
-                </ng-template>
+<!--            <ng-container *ngSwitchCase="'ADMIN'">-->
+<!--              <popup [type]="org.name ? 'info' : 'form'"-->
+<!--                     [popupTitle]="'Добавить организации сотруднику'"-->
+<!--                     [buttonTitle]="org.name ? 'Назначения' : 'Добавить организации'"-->
+<!--                     [styles]="'outline available-width'"-->
+<!--                     [formGroup]="nameForm"-->
+<!--                     (onSubmit)="onSaveName(org)"-->
+<!--              >-->
+<!--                <ng-container *ngIf="org.name; then readonlyName else editableName"-->
+<!--                ></ng-container>-->
+<!--                <ng-template #readonlyName>-->
+<!--                  {{org.name}}-->
+<!--                </ng-template>-->
+<!--                <ng-template #editableName>-->
+<!--                  <label style="width: 100%;">-->
+<!--                    Введите название:-->
+<!--                    <textarea class="input-control"-->
+<!--                              style="width: 100%; height: 200px;"-->
+<!--                              placeholder="Например, ООО Микрофинанс."-->
+<!--                              [formControlName]="'name'"-->
+<!--                    ></textarea>-->
+<!--                  </label>-->
+<!--                </ng-template>-->
 
-                <div style="color: red; margin: 10px 0;">
-                  Внимание! Названия невозможно отредактировать после сохранения.
-                </div>
-              </popup>
-            </ng-container>
+<!--                <div style="color: red; margin: 10px 0;">-->
+<!--                  Внимание! Названия невозможно отредактировать после сохранения.-->
+<!--                </div>-->
+<!--              </popup>-->
+<!--            </ng-container>-->
           </ng-container>
 <!--          <popup [type]="'form'"-->
 <!--                 [popupTitle]="'Изменить время организации'"-->
@@ -173,20 +172,21 @@
 <!--                </div>-->
 <!--              </div>-->
 <!--            </div>-->
-
-<!--            <div style="color: gray;margin:10px 0;">-->
-<!--              <a href="mailto:support@nadzor.ru">Напишите нам</a>,-->
-<!--              если считаете, что время назначено по ошибке.-->
-<!--            </div>-->
 <!--          </popup>-->
-          <popup [popupTitle]="'Удалить организацию?'"
-                 [buttonTitle]="'Удалить организацию'"
-                 [styles]="'reject-button available-width'"
-                 [type]="'confirm'"
-                 (onConfirm)="onCancelOrganization(org)"
-          >
-            Вы действительно хотите удалить организацию?
-          </popup>
+          <ng-container [ngSwitch]="currentUser.role">
+            <ng-container *ngSwitchCase="'ADMIN'">
+              <popup [popupTitle]="'Удалить организацию?'"
+                     [buttonTitle]="'Удалить организацию'"
+                     [styles]="'reject-button available-width'"
+                     [type]="'confirm'"
+                     (onConfirm)="onCancelOrganization(org)"
+              >
+                Вы действительно хотите удалить организацию?
+              </popup>
+            </ng-container>
+
+          </ng-container>
+
         </div>
       </div>
     </div>

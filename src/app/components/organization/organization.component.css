@@ -5,7 +5,7 @@
 }
 
 button {
-  margin: 1%;
+  margin: 2%;
 }
 
 table {
@@ -13,11 +13,11 @@ table {
   align-self: center;
   align-items: center;
   align-content: center;
-  width: 70%;
+  width: 90%;
 }
 
 .big-orange-button {
-  margin-right: 2%;
+  margin-right: -65%;
 }
 /*#col1 {*/
 /*  width: 20%;*/

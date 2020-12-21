@@ -1,4 +1,4 @@
-<div style="text-align: center; font-size: 40pt; margin: 50px;">
+<div style="text-align: center; font-size: 20pt; margin: 50px;">
   Приветствуем вас в НадзорСистема
 </div>
 
@@ -7,15 +7,12 @@
     <ng-container *ngSwitchCase="'EMPLOYEE'">
       <ng-container *ngTemplateOutlet="employeeUser"></ng-container>
     </ng-container>
-<!--    <ng-container *ngSwitchCase="'DOCTOR'">-->
-<!--      <ng-container *ngTemplateOutlet="doctorUser"></ng-container>-->
-<!--    </ng-container>-->
   </ng-container>
 </ng-container>
 
 <ng-template #employeeUser>
   <div style="margin:50px;font-size: 14pt; color: gray; text-align: center">
-    {{userMessage}}, нажмите кнопку, чтобы присоединиться к организации
+    {{userMessage}}, выберите, чтобы присоединиться к организации
   </div>
 
   <div style="text-align: center">
@@ -25,7 +22,7 @@
     >Присоединиться</button>
   </div>
   <div style="margin:50px;font-size: 14pt; color: gray; text-align: center">
-    {{userMessage}}, нажмите, чтобы перейти в лк
+    {{userMessage}}, выберите, чтобы перейти в лк
   </div>
 
   <div style="text-align: center">
@@ -37,7 +34,7 @@
 
 <ng-template #employeeUser>
   <div style="margin:50px;font-size: 14pt; color: gray; text-align: center">
-    {{userMessage}}, нажми на кнопку для перехода в лк
+    {{userMessage}}, выберите для перехода в лк
   </div>
 
   <div style="text-align: center">

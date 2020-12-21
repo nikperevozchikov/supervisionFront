@@ -3,6 +3,7 @@
   <div class="panel-heading">
     <h2>Список организаций</h2>
   </div>
+
   <div style="text-align: center">
     <button class="button big-orange-button"
             routerLink="add"
@@ -31,7 +32,7 @@
         <td>{{organization.event.name}}</td>
         <td>{{organization.supervisionMode.name}}</td>
         <td><button (click)="deleteOrganization(organization.id)" class="btn btn-danger">Удалить</button>
-          <button (click)="updateOrganization(organization.id)" class="btn btn-info" style="margin-left: 10px">Изменить</button>
+          <button (click)="updateOrganization(organization.id)" class="btn btn-info" >Изменить</button>
 
         </td>
       </tr>

@@ -1,7 +1,7 @@
 /* Main colors */
 
-@med-blue-color: rgb(0, 101, 177);
-@med-red-color: rgb(238, 63, 88);
+@med-blue-color: rgb(175, 238, 112);
+@med-red-color: rgb(231, 163, 105);
 
 /* Controls indents */
 @control-padding: 5px;
@@ -104,15 +104,15 @@ a {
 @input-control-width: 400px;
 
 .input-control {
-  border: 2px solid rgb(0, 101, 177);
+  border: 2px solid rgb(134, 220, 110);
   font-size: 14pt;
   border-radius: 4px;
   margin: 10px 0;
   padding: 12px;
   width: @input-control-width;
-
+//selectt
   &:hover {
-    background: lighten(rgb(187, 225, 255), 10%);
+    background: lighten(rgb(208, 246, 200), 10%);
     cursor: pointer;
   }
 }
@@ -178,7 +178,7 @@ input[type="datetime-local"] {
 
 .error {
   .message;
-  border-color: darkred;
+  border-color: #db1d1d;
 }
 
 .warning {
@@ -234,60 +234,6 @@ input[type="datetime-local"] {
     border-bottom: 6px solid @med-red-color !important;
   }
 }
-
-/* Support Ticket Statuses */
-
-.support-ticket-status {
-  width: max-content;
-  font-weight: bold;
-  font-size: 9pt;
-  margin: 8px 0;
-  padding: 8px;
-  border-radius: 4px;
-  color: white;
-  text-transform: uppercase;
-
-  &.opened {
-    background: #003965;
-
-    &:after {
-      content: "Ищем оператора";
-    }
-  }
-
-  &.in-progress {
-    background: green;
-
-    &:after {
-      content: "Уже изучаем"
-    }
-  }
-
-  &.canceled {
-    background: #9f0e23;
-
-    &:after {
-      content: "Отклонено";
-    }
-  }
-
-  &.on-hold {
-    background: chocolate;
-
-    &:after {
-      content: "Приостановлено";
-    }
-  }
-
-  &.closed {
-    background: blueviolet;
-
-    &:after {
-      content: "Вопрос решен";
-    }
-  }
-}
-
 /* Blocks */
 
 .list {

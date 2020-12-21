@@ -6,29 +6,10 @@
 
 <ng-template #logo>
   <span class="header__title-block_title">
-    <b class="logo-red">надзор</b>
+    <b class="logo_blue">надзор</b>
     <b class="logo_red">система</b>
   </span>
 </ng-template>
-
-<!--<ng-template #loading>-->
-<!--  <div style="display: flex; width: 100%; height: 100%; align-items: center; justify-content: center;">-->
-<!--    <ng-container [ngTemplateOutlet]="logo"></ng-container>-->
-<!--    <div class="loader"></div>-->
-<!--  </div>-->
-<!--</ng-template>-->
-
-<!--<ng-template #serviceUnavailable>-->
-<!--  <div class="root" style="padding: 100px;">-->
-<!--    <main style="flex: 1 0 auto;">-->
-<!--      <h1>Сервис временно недоступен</h1>-->
-<!--      <h4>Скоро всё будет хорошо.</h4>-->
-<!--    </main>-->
-<!--    <footer style="flex: 0 0 auto;">-->
-<!--      <ng-container [ngTemplateOutlet]="logo"></ng-container>-->
-<!--    </footer>-->
-<!--  </div>-->
-<!--</ng-template>-->
 
 <!--<ng-template #main>-->
   <div class="root">
@@ -44,7 +25,7 @@
         </div>
         <div class="header__menu-block_item"
              routerLink="help"
-        >Помощь
+        >Информация
         </div>
         <div class="header__menu-block_item"
              routerLink="catalog/employees"
@@ -76,7 +57,7 @@
         <ng-container *ngIf="currentUser; else unauthorizedUserMenu">
           <div class="header__menu-block_item"
                routerLink="profile"
-          >Мой личный кабинет
+          >Личный кабинет
           </div>
           <div class="header__menu-block_item"
                (click)="logout()"
@@ -90,7 +71,7 @@
           </div>
           <div class="header__menu-block_item"
                routerLink="register"
-          >Регистрация
+          >Зарегистрироваться
           </div>
         </ng-template>
       </div>

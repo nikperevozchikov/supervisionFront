@@ -139,7 +139,7 @@ export class ProfileComponent implements OnInit {
       this.organizationsList.splice(localIndex, 1);
       this.organizationsService.deleteOrganization(org.id)
         .subscribe(() => {
-          this.ns.info(`Организация № ${org.name} успешно удалена.`);
+          this.ns.info(`${org.name} успешно удалена.`);
         }, (error) => {
           this.ns.error('Ошибка удаления организации.');
           console.error(error);
