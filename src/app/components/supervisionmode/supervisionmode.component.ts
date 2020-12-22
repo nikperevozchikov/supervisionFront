@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
 import {SupervisionMode} from '../../models/supervisionmode.model';
 import {Organization} from '../../models/organization.model';
@@ -19,7 +19,8 @@ export class SupervisionModeComponent implements OnInit {
   supervisionmodes: Observable<SupervisionMode[]>;
 
   constructor(private supervisionmodesService: SupervisionmodesService,
-              private router: Router) {}
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.reloadData();
@@ -39,7 +40,7 @@ export class SupervisionModeComponent implements OnInit {
         error => console.log(error));
   }
 
-  updateSupervisionmode(id: number){
+  updateSupervisionmode(id: number) {
     this.router.navigate(['update', id]);
   }
 

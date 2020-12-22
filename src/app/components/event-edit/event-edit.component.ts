@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SupervisionMode} from '../../models/supervisionmode.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
@@ -16,7 +16,8 @@ export class EventEditComponent implements OnInit {
   event: Event;
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private eventsService: EventsService) { }
+              private eventsService: EventsService) {
+  }
 
   ngOnInit() {
     this.event = new Event();

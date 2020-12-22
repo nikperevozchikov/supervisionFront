@@ -40,8 +40,6 @@ const routes: Routes = [
   { path: 'event/add', component: EventAddComponent, canActivate: [AuthGuard]},
   { path: 'event/update/:id', component: EventEditComponent, canActivate: [AuthGuard] },
   {path: 'profile', component: ProfileComponent, canActivate: [AuthGuard]}
- // { path: '', redirectTo: 'employee', pathMatch: 'full' }
-
 ];
 
 @NgModule({

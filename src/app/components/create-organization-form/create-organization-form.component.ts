@@ -71,6 +71,7 @@ export class CreateOrganizationFormComponent implements OnInit {
   public selectedOrganizationId: number = null;
   public selectedEventId: number = null;
   public selectedSupervisionmodeId: number = null;
+
   constructor(private positionsService: PositionsService,
               private employeesService: EmployeesService,
               private cdr: ChangeDetectorRef,
@@ -180,8 +181,8 @@ export class CreateOrganizationFormComponent implements OnInit {
     this.eventsService.getEventsList()
       .subscribe((list: Event[] = []) => {
         if (list && list.length > 0) {
-        this._events = list;
-        this.setSelectedEvent(this.selectedEventId ? this.selectedEventId : this._events[0].name);
+          this._events = list;
+          this.setSelectedEvent(this.selectedEventId ? this.selectedEventId : this._events[0].name);
         }
       }, (error) => {
         console.error(error);
@@ -200,24 +201,28 @@ export class CreateOrganizationFormComponent implements OnInit {
     //   this.overlayService.hide();
     // });
   }
+
   private setSelectedOrganization(selectedOrganization: any): void {
     this.form.get('organization').setValue(
       selectedOrganization,
       {onlySelf: true}
     );
   }
+
   private setSelectedEvent(selectedEvent: any): void {
     this.form.get('event').setValue(
       selectedEvent,
       {onlySelf: true}
     );
   }
+
   private setSelectedSupervisionmode(selectedSupervisionmode: any): void {
     this.form.get('supervisionmode').setValue(
       selectedSupervisionmode,
       {onlySelf: true}
     );
   }
+
   // tslint:disable-next-line:typedef
   onSelectPosition(event) {
     this.overlayService.show();

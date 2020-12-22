@@ -1,21 +1,21 @@
 <div class="ml-5">
-<h3>Редактировать режим надзора</h3>
-<div style="width: 400px;">
-  <form (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="name">Название</label>
-      <input type="text" class="form-control" id="name" required [(ngModel)]="supervisionmode.name" name="name">
-    </div>
+  <h3>Редактировать режим надзора</h3>
+  <div style="width: 400px;">
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Название</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="supervisionmode.name" name="name">
+      </div>
 
-    <div class="form-group">
-      <label for="name">Результат режима надзора</label>
-      <input type="text" class="form-control" id="resultOfEvent" required [(ngModel)]="supervisionmode.resultOfEvent" name="resultOfEvent">
-    </div>
+      <div class="form-group">
+        <label for="name">Результат режима надзора</label>
+        <input type="text" class="form-control" id="resultOfEvent" required [(ngModel)]="supervisionmode.resultOfEvent"
+               name="resultOfEvent">
+      </div>
 
 
-
-    <button type="submit" class="btn btn-success">Submit</button>
-    <button (click)="gotoList()" class="btn btn-danger">Close</button>
-  </form>
-</div>
+      <button type="submit" class="btn btn-success">Submit</button>
+      <button (click)="gotoList()" class="btn btn-danger">Close</button>
+    </form>
+  </div>
 </div>

@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {ChangeDetectorRef, Component, OnInit} from '@angular/core';
 import {OrganizationsService} from '../../../services/organizations.service';
 import {IDatePickerConfig} from 'ng2-date-picker';
 import {Moment} from 'moment';
@@ -18,27 +18,14 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {DateTimeService} from '../../../services/date-time.service';
 import {Role} from '../../models/role.model';
 import {AuthenticationService} from '../../../services/authentication.service';
+
 @Component({
   selector: 'app-organization-add',
   templateUrl: './organization-add.component.html',
   styleUrls: ['./organization-add.component.less']
 })
 export class OrganizationAddComponent implements OnInit {
-  // public config: IDatePickerConfig = {
-  //   format: 'DD.MM.YYYY HH:mm',
-  //   showTwentyFourHours: true,
-  //   showSeconds: false,
-  //   minutesInterval: 30,
-  //   firstDayOfWeek: 'mo'
-  // };
-  // public material = true;
-  // public displayDate: Moment | string;
-  // public loading = true;
-  //
-  // public minDate: Moment | string;
-  // public maxDate: Moment | string;
-  // public minTime: Moment | string;
-  // public maxTime: Moment | string;
+
   organization = new Organization();
   employees: Employee[];
   employeeId: number;
@@ -56,7 +43,8 @@ export class OrganizationAddComponent implements OnInit {
               private employeesService: EmployeesService,
               private eventsService: EventsService,
               private authService: AuthenticationService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {
@@ -64,19 +52,22 @@ export class OrganizationAddComponent implements OnInit {
     this.fillEvent();
     this.fillSupervisionmode();
   }
-// tslint:disable-next-line:typedef
-private fillEmployee(): void{
-  this.employeesService.getAll().subscribe(data => this.employees = data);
-}
 
 // tslint:disable-next-line:typedef
-private fillEvent(): void{
-  this.eventsService.getEventsList().subscribe(data => this.events = data);
-}
+  private fillEmployee(): void {
+    this.employeesService.getAll().subscribe(data => this.employees = data);
+  }
+
 // tslint:disable-next-line:typedef
-  private fillSupervisionmode(): void{
+  private fillEvent(): void {
+    this.eventsService.getEventsList().subscribe(data => this.events = data);
+  }
+
+// tslint:disable-next-line:typedef
+  private fillSupervisionmode(): void {
     this.supervisionmodesService.getSupervisionmodesList().subscribe(data => this.supervisionmodes = data);
   }
+
   // newSupervisionmode(): void {
   //   this.submitted = false;
   //   this.supervisionmode = new Supervisionmode();
@@ -86,17 +77,20 @@ private fillEvent(): void{
     // tslint:disable-next-line:triple-equals
     return this.employees.filter(employee => employee.id == id)[0];
   }
+
   // tslint:disable-next-line:typedef
   private chooseEvent(id: number): Event {
     debugger;
     // tslint:disable-next-line:triple-equals
     return this.events.filter(event => event.id == id)[0];
   }
+
   private chooseSupervisionmode(id: number): SupervisionMode {
     debugger;
     // tslint:disable-next-line:triple-equals
     return this.supervisionmodes.filter(supervisionmode => supervisionmode.id == id)[0];
   }
+
   save() {
     // tslint:disable-next-line:no-debugger
     debugger;
@@ -126,6 +120,7 @@ private fillEvent(): void{
   }
 
 }
+
 //   // tslint:disable-next-line:variable-name
 //   private _defaultOrganization = 'Любая';
 //   // tslint:disable-next-line:variable-name

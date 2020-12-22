@@ -16,6 +16,7 @@ interface PasswordValidationResult {
   passwordTooLong: boolean;
   passwordNotEqualVerifyPassword: boolean;
 }
+
 // interface Position {
 //   id: number;
 //   name: string;
@@ -77,22 +78,28 @@ export class RegisterComponent implements OnInit {
         console.error(error);
       });
   }
+
   // get form(): FormGroup {
   //   return this._form;
   // }
   get registerForm(): FormGroup {
     return this._registerForm;
   }
+
   get defaultPosition(): string {
     return this._defaultPosition;
   }
+
   get employees(): Employee[] {
     return this._employees;
   }
+
   get positions(): Position[] {
     return this._positions;
   }
+
   public selectedEmployeeId: number = null;
+
   ngOnInit(): void {
     this.activatedRoute.queryParams
       .subscribe(params => {
@@ -130,6 +137,7 @@ export class RegisterComponent implements OnInit {
 
 
   }
+
   // private choosePos(id: number): Position {
   //   // tslint:disable-next-line:no-debugger
   //    debugger;
@@ -154,16 +162,15 @@ export class RegisterComponent implements OnInit {
       selectedPosition,
       {onlySelf: true}
     );
-    // load doctors by specialization
     const employeesObservable = selectedPosition === 'Любая' ?
       this.employeesService.getAll() :
       this.employeesService.getByPosition(selectedPosition);
     employeesObservable.subscribe((list: Employee[] = []) => {
-      // this.setDoctors(list);
     }, (error) => {
       console.error(error);
     });
   }
+
   // tslint:disable-next-line:typedef
   // onSelectPosition1(form: NgForm) {
   //   // this.overlayService.show();
@@ -227,9 +234,9 @@ export class RegisterComponent implements OnInit {
         formValue.lastName,
         formValue.middleName,
         formValue.address,
-      // moment(formValue.birthday, "YYYY-MM-DD").format("DD MMM YYYY")
+        // moment(formValue.birthday, "YYYY-MM-DD").format("DD MMM YYYY")
         formValue.position
-       // this.choosePos(this.positionId)
+        // this.choosePos(this.positionId)
       );
       this.employeesService.register(employee)
         .subscribe(() => {

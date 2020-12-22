@@ -1,32 +1,36 @@
 <div class="ml-5">
-<div class="panel panel-primary">
-  <div class="panel-heading">
-    <h2>Список режимов надзора</h2>
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Список режимов надзора</h2>
+    </div>
+    <div style="text-align: center">
+      <button class="button big-orange-button"
+              routerLink="add"
+      >Добавить режим надзора
+      </button>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>Название</th>
+          <th>Результат режима надзора</th>
+          <th>Действие</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let supervisionmode of supervisionmodes | async">
+          <td>{{supervisionmode.name}}</td>
+          <td>{{supervisionmode.resultOfEvent}}</td>
+          <td>
+            <button (click)="deleteSupervisionmode(supervisionmode.id)" class="btn btn-danger">Удалить</button>
+            <button (click)="updateSupervisionmode(supervisionmode.id)" class="btn btn-info" style="margin-left: 10px">
+              Изменить
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-  <div style="text-align: center">
-    <button class="button big-orange-button"
-            routerLink="add"
-    >Добавить режим надзора</button>
-  </div>
-  <div class="panel-body">
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th>Название</th>
-        <th>Результат режима надзора</th>
-        <th>Действие</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let supervisionmode of supervisionmodes | async">
-        <td>{{supervisionmode.name}}</td>
-        <td>{{supervisionmode.resultOfEvent}}</td>
-        <td><button (click)="deleteSupervisionmode(supervisionmode.id)" class="btn btn-danger">Удалить</button>
-          <button (click)="updateSupervisionmode(supervisionmode.id)" class="btn btn-info" style="margin-left: 10px">Изменить</button>
-        </td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
 </div>

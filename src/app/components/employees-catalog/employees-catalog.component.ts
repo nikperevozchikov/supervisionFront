@@ -48,6 +48,7 @@ export class EmployeesCatalogComponent implements OnInit {
         this.overlayService.hide();
       });
   }
+
   // tslint:disable-next-line:typedef
   onCreateOrganization(employeeId: number) {
     this.router.navigate(['organizations/add'], {

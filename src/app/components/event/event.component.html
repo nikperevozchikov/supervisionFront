@@ -6,7 +6,8 @@
     <div style="text-align: center">
       <button class="button big-orange-button"
               routerLink="add"
-      >Добавить мероприятие</button>
+      >Добавить мероприятие
+      </button>
     </div>
     <div class="panel-body">
       <table class="table table-striped">
@@ -23,7 +24,8 @@
           <td>{{event.name}}</td>
           <td>{{event.dateOfEvent}}</td>
           <td>{{event.resultOfEvent}}</td>
-          <td><button (click)="deleteEvent(event.id)" class="btn btn-danger">Удалить</button>
+          <td>
+            <button (click)="deleteEvent(event.id)" class="btn btn-danger">Удалить</button>
             <button (click)="updateEvent(event.id)" class="btn btn-info" style="margin-left: 10px">Изменить</button>
           </td>
         </tr>

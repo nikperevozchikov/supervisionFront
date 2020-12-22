@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
 import {SupervisionMode} from '../../models/supervisionmode.model';
+
 @Component({
   selector: 'app-supervisionmode-add',
   templateUrl: './supervisionmode-add.component.html',
@@ -13,7 +14,8 @@ export class SupervisionModeAddComponent implements OnInit {
   submitted = false;
 
   constructor(private supervisionmodesService: SupervisionmodesService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {

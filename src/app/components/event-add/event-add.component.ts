@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SupervisionMode} from '../../models/supervisionmode.model';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
 import {Router} from '@angular/router';
@@ -16,7 +16,8 @@ export class EventAddComponent implements OnInit {
   submitted = false;
 
   constructor(private eventsService: EventsService,
-              private router: Router) { }
+              private router: Router) {
+  }
 
   // tslint:disable-next-line:typedef
   ngOnInit() {

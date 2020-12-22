@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {SupervisionMode} from '../../models/supervisionmode.model';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
@@ -16,7 +16,8 @@ export class EventComponent implements OnInit {
   events: Observable<Event[]>;
 
   constructor(private eventsService: EventsService,
-              private router: Router) {}
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.reloadData();
@@ -36,7 +37,7 @@ export class EventComponent implements OnInit {
         error => console.log(error));
   }
 
-  updateEvent(id: number){
+  updateEvent(id: number) {
     this.router.navigate(['event/update', id]);
   }
 

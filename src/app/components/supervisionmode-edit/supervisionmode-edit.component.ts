@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import { Observable } from 'rxjs';
+import {Observable} from 'rxjs';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
 import {SupervisionMode} from '../../models/supervisionmode.model';
+
 @Component({
   selector: 'app-supervisionmode-edit',
   templateUrl: './supervisionmode-edit.component.html',
@@ -14,7 +15,8 @@ export class SupervisionModeEditComponent implements OnInit {
   supervisionmode: SupervisionMode;
 
   constructor(private route: ActivatedRoute, private router: Router,
-              private supervisionmodesService: SupervisionmodesService) { }
+              private supervisionmodesService: SupervisionmodesService) {
+  }
 
   ngOnInit() {
     this.supervisionmode = new SupervisionMode();

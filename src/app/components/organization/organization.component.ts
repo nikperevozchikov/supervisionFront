@@ -20,6 +20,7 @@ import {Constants} from '../../common/constants.utils';
 import {SupervisionMode} from '../../models/supervisionmode.model';
 import {Organization} from '../../models/organization.model';
 import {Observable} from 'rxjs';
+
 @Component({
   selector: 'app-organization',
   templateUrl: './organization.component.html',
@@ -30,11 +31,12 @@ export class OrganizationComponent implements OnInit {
 
   organizations: Observable<Organization[]>;
 
-  constructor( private organizationsService: OrganizationsService,
-               // private employeesService: EmployeesService,
-               // private eventsService: EventsService,
-               // private supervisionmodesService: SupervisionmodesService,
-               private router: Router) {}
+  constructor(private organizationsService: OrganizationsService,
+              // private employeesService: EmployeesService,
+              // private eventsService: EventsService,
+              // private supervisionmodesService: SupervisionmodesService,
+              private router: Router) {
+  }
 
   ngOnInit() {
     this.reloadData();
@@ -54,7 +56,7 @@ export class OrganizationComponent implements OnInit {
         error => console.log(error));
   }
 
-  updateOrganization(id: number){
+  updateOrganization(id: number) {
     this.router.navigate(['organizations/update', id]);
   }
 

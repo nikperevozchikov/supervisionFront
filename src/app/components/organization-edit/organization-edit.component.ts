@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SupervisionMode} from '../../models/supervisionmode.model';
 import {ActivatedRoute, Router} from '@angular/router';
 import {SupervisionmodesService} from '../../../services/supervisionmodes.service';
@@ -35,7 +35,8 @@ export class OrganizationEditComponent implements OnInit {
               private eventsService: EventsService,
               private authService: AuthenticationService,
               private router: Router,
-              private  route: ActivatedRoute) { }
+              private  route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     debugger;
@@ -47,23 +48,25 @@ export class OrganizationEditComponent implements OnInit {
         this.organization = data;
         this.employeeId = this.organization.employee.id;
         this.eventId = this.organization.event.id;
-        this.supervisionmodeId =  this.organization.supervisionMode.id;
+        this.supervisionmodeId = this.organization.supervisionMode.id;
       }, error => console.log(error));
     this.fillEmployee();
     this.fillEvent();
     this.fillSupervisionmode();
   }
+
 // tslint:disable-next-line:typedef
-  private fillEmployee(): void{
+  private fillEmployee(): void {
     this.employeesService.getAll().subscribe(data => this.employees = data);
   }
 
 // tslint:disable-next-line:typedef
-  private fillEvent(): void{
+  private fillEvent(): void {
     this.eventsService.getEventsList().subscribe(data => this.events = data);
   }
+
 // tslint:disable-next-line:typedef
-  private fillSupervisionmode(): void{
+  private fillSupervisionmode(): void {
     this.supervisionmodesService.getSupervisionmodesList().subscribe(data => this.supervisionmodes = data);
   }
 
@@ -72,17 +75,20 @@ export class OrganizationEditComponent implements OnInit {
     // tslint:disable-next-line:triple-equals
     return this.employees.filter(employee => employee.id == id)[0];
   }
+
   // tslint:disable-next-line:typedef
   private chooseEvent(id: number): Event {
     debugger;
     // tslint:disable-next-line:triple-equals
     return this.events.filter(event => event.id == id)[0];
   }
+
   private chooseSupervisionmode(id: number): SupervisionMode {
     debugger;
     // tslint:disable-next-line:triple-equals
     return this.supervisionmodes.filter(supervisionmode => supervisionmode.id == id)[0];
   }
+
   updateOrganization() {
     debugger;
     this.organization.employee = this.chooseEmployee(this.employeeId);
